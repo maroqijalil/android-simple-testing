@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/iv_main_poster"
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Title"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_main_poster"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_main_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="(2000)"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_main_title"
+            app:layout_constraintStart_toEndOf="@+id/tv_main_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_main_title" />
+
+        <TextView
+            android:id="@+id/tv_main_genre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:maxWidth="180dp"
+            android:text="Genre"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_main_teams"
+            app:layout_constraintStart_toEndOf="@id/iv_main_poster"
+            app:layout_constraintTop_toBottomOf="@+id/tv_main_title" />
+
+        <TextView
+            android:id="@+id/tv_main_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_main_year" />
+
+        <TextView
+            android:id="@+id/tv_main_teams"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxWidth="180dp"
+            android:maxLines="1"
+            android:text="Sutradara: Jalil"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/iv_main_poster"
+            app:layout_constraintTop_toBottomOf="@+id/tv_main_genre" />
+
+        <TextView
+            android:id="@+id/tv_main_actor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxWidth="280dp"
+            android:maxLines="1"
+            android:text="Pemeran: Muchamad, Maroqi, Abdul, Jalil"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/iv_main_poster"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_teams" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+</LinearLayout>

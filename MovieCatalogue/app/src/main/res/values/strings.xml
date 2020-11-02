@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="splash_name">Katalog</string>
+    <string name="splash_desc"><![CDATA[Film & Serial TV]]></string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_title_movie">Movie</string>
+    <string name="tab_title_tv">TV Show</string>
+</resources>
