@@ -8,13 +8,11 @@ class ListCaster {
         fun getStringList(listString: ArrayList<String>?): String {
             var str = ""
 
-            if (listString != null) {
-                listString.forEachIndexed { index, it ->
-                    if (index < listString.size - 1)
-                        str += "$it, "
-                    else
-                        str += it
-                }
+            listString?.forEachIndexed { index, it ->
+                str += if (index < listString.size - 1)
+                    "$it, "
+                else
+                    it
             }
 
             return str
@@ -27,11 +25,11 @@ class ListCaster {
             if (listString != null) {
                 var index = 0
 
-                listString.forEach { _, v ->
-                    if (index < listString.size - 1)
-                        str += "$v, "
+                listString.forEach { (_, v) ->
+                    str += if (index < listString.size - 1)
+                        "$v, "
                     else
-                        str += v
+                        v
 
                     index++
                 }

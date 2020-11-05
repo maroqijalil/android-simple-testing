@@ -14,12 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import my.maroqi.application.moviecatalogue.R
 import my.maroqi.application.moviecatalogue.ui.main.list.adapter.DataListAdapter
 import my.maroqi.application.moviecatalogue.ui.main.list.adapter.DataListDecoration
-import my.maroqi.application.moviecatalogue.ui.main.MainActivity
 import my.maroqi.application.moviecatalogue.utility.ListItemType
-import my.maroqi.application.moviecatalogue.utility.NavigationHandler
 import my.maroqi.application.moviecatalogue.viewmodel.ViewModelFactory
 
-class CatalogueListFragment : Fragment(), NavigationHandler {
+class CatalogueListFragment : Fragment() {
 
     private lateinit var vmCatalogueList: CatalogueListViewModel
     private lateinit var mType: ListItemType
@@ -70,7 +68,7 @@ class CatalogueListFragment : Fragment(), NavigationHandler {
 
         vmCatalogueList = ViewModelProvider(
             this,
-            ViewModelFactory(this, this)
+            ViewModelFactory(this)
         ).get(CatalogueListViewModel::class.java)
 
         rvDataList = v.findViewById(R.id.rv_main_list)
@@ -110,9 +108,5 @@ class CatalogueListFragment : Fragment(), NavigationHandler {
             setupObserver()
 
         rvaDataList = DataListAdapter(dataList, mType)
-    }
-
-    override fun navigateTo(index: Int, type: ListItemType) {
-        (this as MainActivity).navigateTo(index, type)
     }
 }

@@ -13,9 +13,9 @@ import my.maroqi.application.moviecatalogue.data.model.TVItem
 class DataListAdapter(genList: ArrayList<*>?, private val type: ListItemType) :
     RecyclerView.Adapter<DataListViewHolder>() {
 
-    val movieList: ArrayList<MovieItem> = arrayListOf()
-    val tvList: ArrayList<TVItem> = arrayListOf()
-    var listSize: Int = 0
+    private val movieList: ArrayList<MovieItem> = arrayListOf()
+    private val tvList: ArrayList<TVItem> = arrayListOf()
+    private var listSize: Int = 0
 
     init {
         if (genList != null)
@@ -32,9 +32,9 @@ class DataListAdapter(genList: ArrayList<*>?, private val type: ListItemType) :
     override fun onBindViewHolder(holder: DataListViewHolder, position: Int) {
         if (position < listSize) {
             if (type == ListItemType.MOVIE) {
-                holder.insertMovie(movieList.get(position), position)
+                holder.insertMovie(movieList[position], position)
             } else if (type == ListItemType.TV_SHOW) {
-                holder.insertTV(tvList.get(position), position)
+                holder.insertTV(tvList[position], position)
             }
         }
     }

@@ -1,6 +1,5 @@
 package my.maroqi.application.moviecatalogue.ui.detail
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -13,11 +12,9 @@ import my.maroqi.application.moviecatalogue.data.model.MovieData
 import my.maroqi.application.moviecatalogue.data.model.MovieItem
 import my.maroqi.application.moviecatalogue.data.model.TVData
 import my.maroqi.application.moviecatalogue.data.model.TVItem
-import my.maroqi.application.moviecatalogue.ui.main.list.CatalogueListViewModel
 import my.maroqi.application.moviecatalogue.utility.ListItemType
 
-class DataDetailsViewModel(ctx: Context, svd: SavedStateHandle) : ViewModel() {
-    private val context = ctx
+class DataDetailsViewModel(svd: SavedStateHandle) : ViewModel() {
     val savedState = svd
 
     private val detailMovie = MutableLiveData<MovieItem>()

@@ -1,10 +1,7 @@
 package my.maroqi.application.moviecatalogue.ui.main
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.UiController
-import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeLeft
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -12,14 +9,13 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
-import kotlinx.android.synthetic.main.fragment_list_catalogue.view.*
 import my.maroqi.application.moviecatalogue.R
 import my.maroqi.application.moviecatalogue.data.model.MovieData
 import my.maroqi.application.moviecatalogue.data.model.MovieItem
 import my.maroqi.application.moviecatalogue.data.model.TVData
 import my.maroqi.application.moviecatalogue.data.model.TVItem
 import my.maroqi.application.moviecatalogue.utility.ListCaster
-import org.hamcrest.Matcher
+import org.hamcrest.Matchers.allOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,18 +26,23 @@ class MainActivityTest {
     private val movieList = getMovieListData()
     private val tvList = getTVListData()
 
-    @get: Rule
+    @JvmField
+    @Rule
     var activityRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
     fun loadMovieList() {
-        onView(withId(R.id.rv_main_list)).check(matches(isDisplayed()))
+        onView(allOf(isDisplayed(), withId(R.id.rv_main_list)))
     }
 
     @Test
     fun movieDetailTest() {
-        onView(withId(R.id.rv_main_list)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(movieList.size))
-        onView(withId(R.id.rv_main_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(4, click()))
+        onView(
+            allOf(
+                isDisplayed(),
+                withId(R.id.rv_main_list)
+            )
+        ).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(4, click()))
         onView(withId(R.id.tv_detail_title)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_detail_title)).check(matches(withText(movieList[4].title)))
         onView(withId(R.id.tv_detail_year)).check(matches(isDisplayed()))
@@ -53,20 +54,42 @@ class MainActivityTest {
         onView(withId(R.id.tv_detail_release)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_detail_release)).check(matches(withText(movieList[4].releaseDate)))
         onView(withId(R.id.tv_detail_teams)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_detail_teams)).check(matches(withText(ListCaster.getStringListFromMap(movieList[4].teams))))
+        onView(withId(R.id.tv_detail_teams)).check(
+            matches(
+                withText(
+                    ListCaster.getStringListFromMap(
+                        movieList[4].teams
+                    )
+                )
+            )
+        )
         onView(withId(R.id.tv_detail_actor)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_detail_actor)).check(matches(withText(ListCaster.getStringList(movieList[4].actors))))
+        onView(withId(R.id.tv_detail_actor)).check(
+            matches(
+                withText(
+                    ListCaster.getStringList(
+                        movieList[4].actors
+                    )
+                )
+            )
+        )
     }
+
     @Test
     fun loadTVList() {
         onView(withId(R.id.view_pager)).perform(swipeLeft())
-        onView(withId(R.id.rv_main_list)).check(matches(isDisplayed()))
+        onView(allOf(isDisplayed(), withId(R.id.rv_main_list)))
     }
 
     @Test
     fun tvDetailTest() {
-        onView(withId(R.id.rv_main_list)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(movieList.size))
-        onView(withId(R.id.rv_main_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
+        onView(withId(R.id.view_pager)).perform(swipeLeft())
+        onView(
+            allOf(
+                isDisplayed(),
+                withId(R.id.rv_main_list)
+            )
+        ).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
         onView(withId(R.id.tv_detail_title)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_detail_title)).check(matches(withText(tvList[2].title)))
         onView(withId(R.id.tv_detail_year)).check(matches(isDisplayed()))

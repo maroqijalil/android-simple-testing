@@ -62,7 +62,7 @@ class DataDetailsActivity : AppCompatActivity() {
 
         vmDataDetails = ViewModelProvider(
             this,
-            ViewModelFactory(this, this)
+            ViewModelFactory(this)
         ).get(DataDetailsViewModel::class.java)
 
         title = findViewById(R.id.tv_detail_title)
@@ -109,14 +109,18 @@ class DataDetailsActivity : AppCompatActivity() {
     }
 
     private fun initDataDetail() {
-        if (vmDataDetails.savedState.contains(CatalogueListViewModel.MOVIE_SVD)) {
-            movieItem = vmDataDetails.loadDataDetail() as MovieItem
-            insertMovieDetail()
-        } else if (vmDataDetails.savedState.contains(CatalogueListViewModel.TV_SVD)) {
-            tvItem = vmDataDetails.loadDataDetail() as TVItem
-            inserTVDetail()
-        } else {
-            setupObserver()
+        when {
+            vmDataDetails.savedState.contains(CatalogueListViewModel.MOVIE_SVD) -> {
+                movieItem = vmDataDetails.loadDataDetail() as MovieItem
+                insertMovieDetail()
+            }
+            vmDataDetails.savedState.contains(CatalogueListViewModel.TV_SVD) -> {
+                tvItem = vmDataDetails.loadDataDetail() as TVItem
+                inserTVDetail()
+            }
+            else -> {
+                setupObserver()
+            }
         }
     }
 

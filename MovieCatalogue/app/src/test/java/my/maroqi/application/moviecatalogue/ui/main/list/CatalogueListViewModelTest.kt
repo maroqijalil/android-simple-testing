@@ -14,7 +14,6 @@ import my.maroqi.application.moviecatalogue.data.model.TVData
 import my.maroqi.application.moviecatalogue.data.model.TVItem
 import my.maroqi.application.moviecatalogue.utility.ListItemType
 import org.junit.Before
-
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
