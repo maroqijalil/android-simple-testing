@@ -132,7 +132,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            tools:ignore="UseCompoundDrawables">
 
             <TextView
                 android:id="@+id/tv_detail_rating"
@@ -147,7 +148,7 @@
                 android:layout_height="26dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/star"
-                />
+                android:contentDescription="@string/rating"/>
         </LinearLayout>
 
         <TextView
